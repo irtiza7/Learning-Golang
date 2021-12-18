@@ -2,6 +2,12 @@
 % Name: Muhammad Irtaza
 % Roll Number: 21L-7232
 
+% Call main to print student information
+main:-
+    write('Name: Muhammad Irtaza'),
+    nl,
+    write('Roll Num: 21L-7232').
+
 /* FACTS */
 male(irtaza).
 male(muslim).
@@ -130,7 +136,6 @@ elderBrother(irtaza,ahmed).
 elderBrother(irtaza,ali).
 elderBrother(irtaza,hassaan).
 
-
 youngerBrother(muslim,akram).
 youngerBrother(aslam,muslim).
 youngerBrother(raheela,kashif).
@@ -150,7 +155,6 @@ youngerBrother(ahmed,irtaza).
 youngerBrother(ali,hassaan).
 youngerBrother(ali,irtaza).
 youngerBrother(hassaan,irtaza).
-
 
 sister(raheela,saima).
 sister(raheela,waseema).
@@ -183,7 +187,6 @@ parent(waseema,saeeda).
 parent(saima,saeeda).
 parent(awais,saeeda).
 parent(kashif,saeeda).
-
 parent(irtaza,muslim).
 parent(ali,muslim).
 parent(ahmed,muslim).
@@ -192,6 +195,24 @@ parent(irtaza,raheela).
 parent(ali,raheela).
 parent(ahmed,raheela).
 parent(hassaan,raheela).
+parent(haroon,aslam).
+parent(haroon,sakeena).
+parent(sadia,aslam).
+parent(sadia,sakeena).
+parent(hajra,akram).
+parent(hajra,naeema).
+parent(hafsa,akram).
+parent(hafsa,naeema).
+parent(hassan,akkram).
+parent(hassan,waseema).
+parent(zareen,akkram).
+parent(zareen,waseema).
+parent(qaswa,kashif).
+parent(qaswa,shahida).
+parent(zarwa,shahida).
+parent(zarawa,kashif).
+parent(naufil,kashif).
+parent(naufil,shahida).
 
 son(ismail,muslim).
 son(sakeena,muslim).
@@ -201,47 +222,59 @@ son(ismail,akram).
 son(sakeena,akram).
 son(mushtaak,awais).
 son(saeeda,awais).
-son(kashif,mushtaak).
-son(kashif,saeeda).
-son(haroon,aslam).
-son(haroon,sakeena).
-son(ahmed,muslim).
-son(ahmed,raheela).
-son(ali,muslim).
-son(ali,raheela).
-son(hassaan,muslim).
-son(hassaan,raheela).
-son(irtaza,muslim).
-son(irtaza,raheela).
-son(hassan,akkram).
-son(hassan,waseema).
-son(naufil,kashif).
-son(naufil,kashif).
+son(mushtaak,kashif).
+son(saeeda,kashif).
+son(aslam,haroon).
+son(sakeena,haroon).
+son(muslim,ahmed).
+son(raheela,ahmed).
+son(muslim,ali).
+son(raheela,ali).
+son(muslim,hassaan).
+son(raheela,hassaan).
+son(muslim,irtaza).
+son(raheela,irtaza).
+son(akkram,hassan).
+son(waseema,hassan).
+son(kashif,naufil).
+son(kashif,naufil).
 
-daughter(raheela,mushtaak).
-daughter(raheela,saeeda).
-daughter(waseema,mushtaak).
-daughter(waseema,saeeda).
-daughter(saima,mushtaak).
-daughter(saima,saeeda).
-daughter(hajra,akram).
-daughter(hajra,naeema).
-daughter(hafsa,akram).
-daughter(hafsa,naeema).
-daughter(sadia,aslam).
-daughter(sadia,taiJee).
-daughter(zareen,akkram).
-daughter(zareen,waseema).
-daughter(qaswa,kashif).
-daughter(qaswa,shahida).
-daughter(zarwa,kashif).
-daughter(zarwa,shahida).
+daughter(mushtaak,raheela).
+daughter(saeeda,raheela).
+daughter(mushtaak,waseema).
+daughter(saeeda,waseema).
+daughter(mushtaak,saima).
+daughter(saeeda,saima).
+daughter(akram,hajra).
+daughter(naeema,hajra).
+daughter(akram,hafsa).
+daughter(naeema,hafsa).
+daughter(aslam,sadia).
+daughter(taiJee,sadia).
+daughter(akkram,zareen).
+daughter(waseema,zareen).
+daughter(kashif,qaswa).
+daughter(shahida,qaswa).
+daughter(kashif,zarwa).
+daughter(shahida,zarwa).
 
+finlaw(muslim,mushtaak).
+finlaw(akkram,mushtaak).
+finlaw(mujahid,mushtaak).
+finlaw(raheela,ismail).
+finlaw(taiJee,ismail).
+finlaw(naeema,ismail).
 
+minlaw(muslim,saeeda).
+minlaw(akkram,saeeda).
+minlaw(mujahid,saeeda).
+minlaw(raheela,sakeena).
+minlaw(taiJee,sakeena).
+minlaw(naeema,sakeena).
 
 /* RULES */
 sibling(Person,Sib):-
-    brother(Person,Sib),sister(Person,Sib).
+    father(Person,Father),parent(Sib,Father).
 
 dada(Person,Dada):-
     father(Person,Father),father(Father,Dada).
@@ -279,9 +312,9 @@ khalu(Person,Khalu):-
     khala(Person,Khala),husband(Khala,Khalu).
 
 pota(Person,GSon):-
-    child(Person,Child),son(Child,GSon).
+    parent(Child,Person),son(Child,GSon).
 poti(Person,GDaughter):-
-    child(Person,Child),daughter(Child,GDaughter).
+    parent(Child,Person),daughter(Child,GDaughter).
 
 bhanja(Person,Bhanja):-
     sister(Person,Sister),son(Sister,Bhanja).
@@ -313,7 +346,13 @@ jeth(Person,Jeth):-
 jethani(Person,Jethani):-
     jeth(Person,Jeth),wife(Jeth,Jethani).
 
-/*
+humzulf(Person,Humzulf):-
+    sali(Person,Sali),husband(Sali,Humzulf).
+
+fatherinlaw(Person,FLaw):-
+    finlaw(Person,FLaw).
+
 motherinlaw(Person,MLaw):-
-    husband()
-*/
+    minlaw(Person,MLaw).
+
+
