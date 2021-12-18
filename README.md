@@ -1,2 +1,2 @@
-# Learning-Golang
-Practice problems to learn Go.
+# Miscellaneous
+### Nothing special here, just programs for randoms tasks.
