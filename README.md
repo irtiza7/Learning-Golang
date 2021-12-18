@@ -1,2 +1,2 @@
 # Miscellaneous
-### Nothing special here, just programs for randoms tasks.
+### Nothing special here, just programs for random tasks.
