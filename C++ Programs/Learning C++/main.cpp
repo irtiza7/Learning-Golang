@@ -13,6 +13,7 @@ void average(int n1, int n2, int n3, int n4) {
 // double foo3() {}
 
 int main() {
+    printf("---Calculator---\n")
     int num1, num2, num3, num4;
     
     cout << "Enter num 1> " << endl;
